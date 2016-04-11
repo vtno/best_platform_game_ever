@@ -7,10 +7,15 @@ public class PushSwitchController : MonoBehaviour {
 	public GameObject button;
 	bool isReady = true;
 
+	void Start(){
+		UpdateColor ();
+	}
+
 	void OnCollisionEnter(Collision collision){
 		if (isReady) {
 			if (collision.gameObject == button) {
 				status = !status;
+				UpdateColor ();
 				StartCoroutine (wait());
 			}
 		}
@@ -18,7 +23,17 @@ public class PushSwitchController : MonoBehaviour {
 
 	IEnumerator wait() {
 		isReady = false;
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(0.5f);
 		isReady = true;
+	}
+
+	void UpdateColor(){
+		if (status) {
+			this.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
+			button.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
+		} else {
+			this.GetComponent<Renderer> ().material.SetColor ("_Color", Color.red);
+			button.GetComponent<Renderer> ().material.SetColor ("_Color", Color.red);
+		}
 	}
 }
