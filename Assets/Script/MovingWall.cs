@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MovingWall : MonoBehaviour {
 
-	public GameObject mySwitch;
 	public bool isOpen;
 	public Transform openedPosition;
 	public Transform closedPosition;
@@ -16,7 +15,6 @@ public class MovingWall : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		isOpen = mySwitch.GetComponent<PushSwitchController> ().status;
 		if (isOpen) {
 			if (fraction < 1.0f) {
 				fraction += Time.deltaTime;
