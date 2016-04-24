@@ -14,7 +14,11 @@ public class ColoredPickup : Pickup {
 				collider.gameObject.layer = 9;
 			} else if (myColor.Equals (Color.blue)) {
 				collider.gameObject.layer = 10;
+<<<<<<< HEAD
 			} else if (myColor.Equals (Color.yellow)) {
+=======
+			} else if (myColor.Equals (new Color(1, 1, 0))) {
+>>>>>>> mickey/UI
 				collider.gameObject.layer = 11;
 			} else {
 				collider.gameObject.layer = 0;

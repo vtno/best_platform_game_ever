@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scene/platform_lvl1.unity
+=======
+- path: Assets/Scene/Tutorial.unity
+>>>>>>> mickey/UI
   isLoaded: 1
   isActive: 1
