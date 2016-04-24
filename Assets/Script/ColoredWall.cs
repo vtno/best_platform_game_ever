@@ -3,9 +3,11 @@ using System.Collections;
 
 public class ColoredWall : MonoBehaviour {
 
+	public Material pickupColor;
+
 	// Use this for initialization
 	void Start (){
-		Color myColor = this.GetComponent<Renderer> ().material.color;
+		Color myColor = pickupColor.color;
 		if (myColor.Equals (Color.red)) {
 			this.gameObject.layer = 8;
 		} else if (myColor.Equals (Color.green)) {
