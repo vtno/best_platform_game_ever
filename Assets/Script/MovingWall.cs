@@ -7,14 +7,13 @@ public class MovingWall : MonoBehaviour {
 	public Transform openedPosition;
 	public Transform closedPosition;
 	private float fraction = 0f;
+	public GameObject button;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
+		if (button.GetComponent<PushSwitchController> () != null) {
+			isOpen = button.GetComponent<PushSwitchController> ().status;
+		}
 		if (isOpen) {
 			if (fraction < 1.0f) {
 				fraction += Time.deltaTime;
