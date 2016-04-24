@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityStandardAssets;
 
 public class LevelOne_Setting : MonoBehaviour {
 
