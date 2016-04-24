@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	Rigidbody rb;
 	float speed;
-
+	public bool key = false;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
