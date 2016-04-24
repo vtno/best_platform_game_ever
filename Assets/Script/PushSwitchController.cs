@@ -5,16 +5,15 @@ public class PushSwitchController : MonoBehaviour {
 
 	public bool status;
 	public GameObject button;
-	protected bool isReady = true;
+	bool isReady = true;
 
 	void Start(){
 		UpdateColor ();
 	}
 
-	protected virtual void OnCollisionEnter(Collision collision){
+	void OnCollisionEnter(Collision collision){
 		if (isReady) {
 			if (collision.gameObject == button) {
-				Debug.Log("KUY");
 				status = !status;
 				UpdateColor ();
 				StartCoroutine (wait());
@@ -22,13 +21,13 @@ public class PushSwitchController : MonoBehaviour {
 		}
 	}
 
-	protected IEnumerator wait() {
+	IEnumerator wait() {
 		isReady = false;
 		yield return new WaitForSeconds(0.5f);
 		isReady = true;
 	}
 
-	protected void UpdateColor(){
+	void UpdateColor(){
 		if (status) {
 			this.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
 			button.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
