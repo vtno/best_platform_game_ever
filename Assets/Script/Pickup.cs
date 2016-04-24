@@ -13,7 +13,8 @@ public class Pickup : MonoBehaviour
 
 	public virtual void OnTriggerEnter (Collider collider)
 	{
-		if (collider.gameObject.name.Equals ("Player")) {
+		if (collider.gameObject.tag.Equals ("Player")) {
+			Debug.Log ("Aloha Snackbar");
 			Destroy (this.gameObject);
 		}
 	}
