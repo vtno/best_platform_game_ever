@@ -14,6 +14,8 @@ public class ColoredWall : MonoBehaviour {
 			this.gameObject.layer = 9;
 		} else if (myColor.Equals (Color.blue)) {
 			this.gameObject.layer = 10;
+		} else if (myColor.Equals (new Color(1, 1, 0))) {
+			this.gameObject.layer = 11;
 		} else {
 			this.gameObject.layer = 0;
 		}

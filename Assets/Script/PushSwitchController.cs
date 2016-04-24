@@ -5,9 +5,12 @@ public class PushSwitchController : MonoBehaviour {
 
 	public bool status;
 	public GameObject button;
+	public GameObject RollerBall;
+	AudioLauncher al;
 	bool isReady = true;
 
 	void Start(){
+		al = RollerBall.GetComponent<AudioLauncher> ();
 		UpdateColor ();
 	}
 
@@ -29,6 +32,7 @@ public class PushSwitchController : MonoBehaviour {
 
 	public void UpdateColor(){
 		if (status) {
+			al.ActivateSwitchSound ();
 			this.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
 			button.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
 		} else {
