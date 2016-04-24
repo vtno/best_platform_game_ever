@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MovingWall : MonoBehaviour {
+public class MovingWall : MonoBehaviour
+{
 
 	public bool isOpen;
 	public Transform openedPosition;
 	public Transform closedPosition;
 	private float fraction = 0f;
+	public bool useButton = false;
 	public GameObject button;
 
 	// Update is called once per frame
-	void Update () {
-		if (button.GetComponent<PushSwitchController> () != null) {
-			isOpen = button.GetComponent<PushSwitchController> ().status;
+	void Update ()
+	{
+		if (useButton) {
+			if (button.GetComponent<PushSwitchController> () != null) {
+				isOpen = button.GetComponent<PushSwitchController> ().status;
+			}
 		}
 		if (isOpen) {
 			if (fraction < 1.0f) {
