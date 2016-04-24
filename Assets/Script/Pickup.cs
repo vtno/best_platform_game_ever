@@ -14,10 +14,6 @@ public class Pickup : MonoBehaviour
 	public virtual void OnTriggerEnter (Collider collider)
 	{
 		if (collider.gameObject.tag.Equals ("Player")) {
-<<<<<<< HEAD:Assets/Pickup.cs
-=======
-			Debug.Log ("Aloha Snackbar");
->>>>>>> f5ac4cf17400583f57405f2c81ba26efacd07afa:Assets/Script/Pickup.cs
 			Destroy (this.gameObject);
 		}
 	}
