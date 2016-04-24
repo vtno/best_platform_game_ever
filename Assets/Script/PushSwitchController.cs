@@ -27,7 +27,7 @@ public class PushSwitchController : MonoBehaviour {
 		isReady = true;
 	}
 
-	void UpdateColor(){
+	public void UpdateColor(){
 		if (status) {
 			this.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
 			button.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
