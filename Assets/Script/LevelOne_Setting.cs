@@ -29,7 +29,6 @@ public class LevelOne_Setting : MonoBehaviour {
 
 	void Update() {
 		if (player.transform.position.y < -5f) {
-			al.RespawnSound ();
 			Respawn ();
 		}
 		if (GameObject.Find ("mw1 switch").GetComponent<PushSwitchController> ().status) {
