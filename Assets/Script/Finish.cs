@@ -10,6 +10,7 @@ public class Finish : Pickup
 	public override void OnTriggerEnter (Collider collider)
 	{
 		if (collider.gameObject.tag.Equals ("Player") && collider.gameObject.GetComponent<PlayerKey> ().key) {
+			GetComponent<AudioSource> ().Play();
 			collider.gameObject.GetComponent<PlayerKey> ().key = false;
 			Debug.Log ("finished");
 			SceneManager.LoadScene (nextScene);

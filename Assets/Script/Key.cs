@@ -8,7 +8,7 @@ public class Key : Pickup
 	{
 		if (collider.gameObject.tag.Equals ("Player")) {
 			collider.gameObject.GetComponent<PlayerKey> ().key = true;
-			Destroy (this.gameObject);
+			base.OnTriggerEnter (collider);
 		}
 	}
 }
