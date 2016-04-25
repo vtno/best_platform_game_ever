@@ -6,6 +6,7 @@ public class AudioLauncher : MonoBehaviour {
 	public AudioClip collect;
 	public AudioClip switchOn;
 	public AudioClip checkpoint;
+	public AudioClip respawnSound;
 	AudioSource audio;
 
 	// Use this for initialization
@@ -28,6 +29,11 @@ public class AudioLauncher : MonoBehaviour {
 	public void CheckpointSound()
 	{
 		audio.PlayOneShot (checkpoint, 0.7F);
+	}
+
+	public void RespawnSound()
+	{
+		audio.PlayOneShot (respawnSound, 0.7F);
 	}
 
 }

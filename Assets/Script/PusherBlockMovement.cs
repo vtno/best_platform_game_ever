@@ -12,19 +12,19 @@ public class PusherBlockMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isEnd) {
-			if (fraction < 3.0f) {
+			if (fraction < 2.0f) {
 				fraction += Time.deltaTime;
 			} else {
 				isEnd = false;
 			}
 		} else {
-			if (fraction > -3.0f) {
+			if (fraction > -2.0f) {
 				fraction -= Time.deltaTime;
 			} else {
 				isEnd = true;
 			}
 		}
-		Mathf.Clamp (fraction, 0f, 3f);
+		Mathf.Clamp (fraction, 0f, 2f);
 		transform.position = Vector3.Lerp (endPosition.position, startPosition.position, fraction);
 	}
 }
