@@ -13,8 +13,18 @@ public class LevelOne_Setting : MonoBehaviour {
 	public Transform startPosition;
 	public Transform checkpoint1Position;
 	public Material playerMaterial;
+	float holdTime = 0.0f;
 
 	void Update() {
+		if (Input.GetKey (KeyCode.R)) {
+			holdTime += Time.deltaTime;
+		} else {
+			holdTime = 0;
+		}
+		if (holdTime >= 1.5f) {
+			Respawn ();
+			holdTime = 0;
+		}
 		if (player.transform.position.y < -5f) {
 			Respawn ();
 		}
