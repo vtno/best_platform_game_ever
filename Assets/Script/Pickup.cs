@@ -5,6 +5,7 @@ public class Pickup : MonoBehaviour
 {
 
 	float rotationSpeed = 1.0f;
+	public AudioClip pickupSound;
 
 	void Update ()
 	{
@@ -13,8 +14,9 @@ public class Pickup : MonoBehaviour
 
 	public virtual void OnTriggerEnter (Collider collider)
 	{
-		if (collider.gameObject.tag.Equals ("Player")) {
-			Destroy (this.gameObject);
+		if (collider.tag.Equals ("Player")) {
+			collider.GetComponent<AudioSource> ().PlayOneShot(pickupSound);
+			gameObject.SetActive(false);
 		}
 	}
 }

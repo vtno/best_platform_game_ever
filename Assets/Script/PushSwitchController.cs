@@ -5,18 +5,16 @@ public class PushSwitchController : MonoBehaviour {
 
 	public bool status;
 	public GameObject button;
-	public GameObject RollerBall;
-	AudioLauncher al;
-	bool isReady = true;
+	protected bool isReady = true;
 
-	void Start(){
-		al = RollerBall.GetComponent<AudioLauncher> ();
+	protected virtual void Start(){
 		UpdateColor ();
 	}
 
-	void OnCollisionEnter(Collision collision){
+	protected virtual void OnCollisionEnter(Collision collision){
 		if (isReady) {
 			if (collision.gameObject == button) {
+				GetComponent<AudioSource> ().Play();
 				status = !status;
 				UpdateColor ();
 				StartCoroutine (wait());
@@ -24,7 +22,7 @@ public class PushSwitchController : MonoBehaviour {
 		}
 	}
 
-	IEnumerator wait() {
+	protected IEnumerator wait() {
 		isReady = false;
 		yield return new WaitForSeconds(0.5f);
 		isReady = true;
@@ -32,7 +30,6 @@ public class PushSwitchController : MonoBehaviour {
 
 	public void UpdateColor(){
 		if (status) {
-			al.ActivateSwitchSound ();
 			this.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
 			button.GetComponent<Renderer> ().material.SetColor ("_Color", Color.green);
 		} else {
