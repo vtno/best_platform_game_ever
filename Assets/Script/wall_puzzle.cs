@@ -1,31 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-public class wall_puzzle : MonoBehaviour {
+
+public class wall_puzzle : MonoBehaviour
+{
 	public GameObject player;
-	protected bool isReady = true;
-	protected bool isMoved = false;
-	public Transform openedPosition;
-	public Transform closedPosition;
-	private float fraction = 0f;
-	protected virtual void OnCollisionEnter(Collision collision){
-		if (isReady) {
-			Console.Write ("FUCK");
-			if (collision.gameObject == player) {
-				if (isMoved) {
-					if (fraction < 1.0f) {
-						fraction += Time.deltaTime;
-						isMoved = false;
-					}
-				} else {
-					if (fraction > 0.0f) {
-						fraction -= Time.deltaTime;
-						isMoved = true;
-					}
-				}
+	public bool isMoving = false;
+	public bool isReady = true;
+	public bool direction = true;
+	public Vector3 forward;
+	public Vector3 back;
+
+	void Update ()
+	{
+		if (!isMoving) {
+			GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		} else {
+			if (direction) {
+				GetComponent<Rigidbody> ().AddForce (forward * 10f, ForceMode.Force);
+			} else {
+				GetComponent<Rigidbody> ().AddForce (back * 10f, ForceMode.Force);
 			}
 		}
-		Mathf.Clamp (fraction, 0f, 1f);
-		transform.position = Vector3.Lerp (closedPosition.position, openedPosition.position, fraction);
+	}
+
+	protected virtual void OnCollisionEnter (Collision collision)
+	{
+		if (collision.gameObject.tag.Equals ("Player") && !isMoving && isReady) {
+			wait ();
+			isMoving = true;
+			Debug.Log ("hello");
+		} else if (collision.gameObject.tag.Equals ("Wall") && isMoving) {
+			direction = !direction;
+			isMoving = false;
+		}
+	}
+
+	protected IEnumerator wait() {
+		isReady = false;
+		yield return new WaitForSeconds(0.5f);
+		isReady = true;
 	}
 }
