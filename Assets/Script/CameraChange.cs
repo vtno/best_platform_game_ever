@@ -5,17 +5,19 @@ public class CameraChange : MonoBehaviour {
 
 	public Transform player;
 	public Transform puzzle;
-	public Camera camera1;
-	public Camera camera2;
+	bool reset = false;
 	
 	// Update is called once per frame
 	void Update () {
 		if (Vector3.Distance (player.position, puzzle.position) <= 15.0f) {
-			camera1.enabled = false;
-			camera2.enabled = true;
+			GetComponent<CameraController> ().puzzle = true;
+			reset = false;
 		} else {
-			camera1.enabled = true;
-			camera2.enabled = false;
+			GetComponent<CameraController> ().puzzle = false;
+			if (!reset) {
+				GetComponent<CameraController> ().resetCamera ();
+				reset = true;
+			}
 		}
 		Debug.Log (Vector3.Distance (player.position, puzzle.position));
 	}
